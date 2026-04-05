@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MrittikaWatch — Soil Pollution & Food Safety in India</title>
+<meta name="description" content="Interactive research platform on soil pollution, heavy metal contamination, pesticide use, and food safety impacts across India. Data-driven insights for CHE110."/>
+<meta name="keywords" content="soil pollution India, heavy metals India, pesticide contamination, food safety FSSAI, soil health, agriculture India"/>
+<meta property="og:title" content="MrittikaWatch — Soil Pollution India"/>
+<meta property="og:description" content="Data-driven platform covering soil contamination, food safety & agriculture impact across India."/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="logo-icon">🌱</div>
+    <span>Mrittika<span>Watch</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#contaminants">Contaminants</a></li>
+    <li><a href="#regional-map">States</a></li>
+    <li><a href="#dashboard">Charts</a></li>
+    <li><a href="#casestudies">Case Studies</a></li>
+    <li><a href="#foodsafety">Food Safety</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#live-data">Live Data</a></li>
+  </ul>
+  <div class="nav-cta">
+    <div class="live-indicator"><span class="live-dot"></span> API Live</div>
+    <a href="dashboard.html" class="btn btn-primary" style="padding:8px 18px;font-size:0.82rem">Dashboard →</a>
+  </div>
+  <button id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <button id="close-menu">✕</button>
+  <a href="#overview">Overview</a>
+  <a href="#contaminants">Contaminants</a>
+  <a href="#regional-map">States</a>
+  <a href="#dashboard">Charts</a>
+  <a href="#casestudies">Case Studies</a>
+  <a href="#foodsafety">Food Safety</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#live-data">Live Data</a>
+  <a href="dashboard.html" class="btn btn-primary">Full Dashboard →</a>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-bg-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">🇮🇳 India · CHE110 Research Project · 2024–25</div>
+    <h1 class="hero-title">
+      <span class="line1">Soil Pollution &amp;</span>
+      <span class="line2">Food Safety Crisis</span>
+    </h1>
+    <p class="hero-desc">
+      India's agricultural soils face an escalating contamination crisis — heavy metals, persistent pesticides, and excess fertilizers are silently degrading crop safety and threatening 1.4 billion people's food supply.
+    </p>
+    <div class="hero-actions">
+      <a href="#overview" class="btn btn-primary">🔬 Explore Research</a>
+      <a href="#dashboard" class="btn btn-outline">📊 View Charts</a>
+      <a href="dashboard.html" class="btn btn-gold">⚡ Live Dashboard</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ STATS BANNER ══════════════════════════════════════ -->
+<section id="stats-strip">
+  <div id="stats-track" class="stats-track"></div>
+</section>
+
+<!-- ═══ OVERVIEW ══════════════════════════════════════════ -->
+<section id="overview" class="section-pad">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-img-wrapper reveal-left">
+        <!-- Soil image placeholder with gradient overlay -->
+        <div style="width:100%;height:100%;min-height:380px;background:linear-gradient(135deg,#1a2a10 0%,#0f1a08 40%,#2a1800 100%);display:flex;align-items:center;justify-content:center;font-size:8rem;position:relative;">
+          🌾
+          <div style="position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(10,13,10,0.8),transparent)"></div>
+        </div>
+        <div class="overview-badge">
+          <span class="badge-val" data-count="1.46" data-decimals="2" data-suffix=" Mha">1.46 Mha</span>
+          <span class="badge-txt">Contaminated Indian farmland</span>
+        </div>
+      </div>
+      <div class="overview-text reveal-right">
+        <span class="tag danger">⚠ Critical Issue · India</span>
+        <h2 class="section-title">India's Silent<br/>Soil Emergency</h2>
+        <p style="color:var(--clr-txt-muted);margin-bottom:16px;line-height:1.75">
+          India feeds over 1.4 billion people from 180 million hectares of agricultural land — yet that very soil is under severe and growing contamination pressure from three decades of chemical-intensive farming, unregulated industrial discharge, and heavy metal deposition.
+        </p>
+        <div class="highlight-box">
+          "India uses only 2% of world's cultivated land but consumes 12% of global pesticides — much of which accumulates in soil for decades." — ICAR, 2023
+        </div>
+        <p style="color:var(--clr-txt-muted);line-height:1.75">
+          From Punjab's pesticide belt to West Bengal's arsenic-laced paddy fields, from Vellore's chromium-tainted farmland to Rajasthan's lead-poisoned mining zones — the contamination footprint spans every region of India. The consequences flow directly into the food chain, causing heavy metal accumulation in rice, wheat, vegetables, and milk.
+        </p>
+        <div class="grid-2" style="margin-top:28px;gap:16px">
+          <div class="card" style="padding:18px;text-align:center">
+            <div style="font-size:1.8rem;font-weight:700;color:#ef4444;font-family:'JetBrains Mono',monospace" data-count="153" data-suffix="">0</div>
+            <div style="font-size:0.75rem;color:var(--clr-txt-muted);margin-top:4px">Districts with Arsenic Crisis</div>
+          </div>
+          <div class="card" style="padding:18px;text-align:center">
+            <div style="font-size:1.8rem;font-weight:700;color:#c9a84c;font-family:'JetBrains Mono',monospace" data-count="15" data-suffix="%">0%</div>
+            <div style="font-size:0.75rem;color:var(--clr-txt-muted);margin-top:4px">Avg Crop Yield Reduction</div>
+          </div>
+          <div class="card" style="padding:18px;text-align:center">
+            <div style="font-size:1.8rem;font-weight:700;color:#86a340;font-family:'JetBrains Mono',monospace" data-count="3947" data-suffix="">0</div>
+            <div style="font-size:0.75rem;color:var(--clr-txt-muted);margin-top:4px">Heavy-Metal Hotspot Sites</div>
+          </div>
+          <div class="card" style="padding:18px;text-align:center">
+            <div style="font-size:1.8rem;font-weight:700;color:#f97316;font-family:'JetBrains Mono',monospace" data-count="62" data-suffix="K MT">0</div>
+            <div style="font-size:0.75rem;color:var(--clr-txt-muted);margin-top:4px">Pesticides Used Annually</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTAMINANTS ══════════════════════════════════════ -->
+<section id="contaminants" class="section-pad" style="background:var(--clr-bg)">
+  <div class="container">
+    <span class="tag primary reveal">🧪 Pollutant Types</span>
+    <h2 class="section-title reveal">Key Soil Contaminants<br/>in India</h2>
+    <p class="section-sub reveal">Six major categories of pollutants are degrading Indian agricultural soils, each with distinct sources, pathways, and health consequences.</p>
+    <div class="grid-3" id="contaminants-grid">
+
+      <div class="card contaminant-card c1 reveal reveal-delay-1">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">⚗️</div>
+        <h3>Heavy Metals</h3>
+        <p>Arsenic, Lead, Cadmium, Chromium, Mercury and Nickel accumulate from industrial effluents, mining waste, and contaminated irrigation water. Once in soil, they persist for centuries.</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#ef4444">Hotspots:</strong> West Bengal (As), Rajasthan (Pb/Zn), Tamil Nadu (Cr), Jharkhand (Cd)</p>
+        <div class="contaminant-level">
+          <div class="label">National Threat Level</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="88" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#ef4444;margin-top:4px;font-weight:600">CRITICAL — 88/100</div>
+        </div>
+      </div>
+
+      <div class="card contaminant-card c2 reveal reveal-delay-2">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">🧴</div>
+        <h3>Organochlorine Pesticides</h3>
+        <p>DDT, Endosulfan, HCH and Aldrin persist in soil for 30–50 years. Though many are banned, legacy residues remain widespread especially in Punjab, Andhra Pradesh and Maharashtra.</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#f97316">Main crops:</strong> Cotton, Rice, Sugarcane fields show highest OC residues.</p>
+        <div class="contaminant-level">
+          <div class="label">Persistence Index</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="82" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#f97316;margin-top:4px;font-weight:600">HIGH — 82/100</div>
+        </div>
+      </div>
+
+      <div class="card contaminant-card c3 reveal reveal-delay-3">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">🌿</div>
+        <h3>Excess Fertilizers</h3>
+        <p>Over-application of NPK fertilizers leads to nitrate leaching, soil acidification, and micronutrient imbalance. N-P-K usage in India is highly skewed (4:2:1 vs recommended 4:2:1.3).</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#eab308">Impact:</strong> Blue-baby syndrome in infants, groundwater nitrate above 45 mg/L in 56% of blocks.</p>
+        <div class="contaminant-level">
+          <div class="label">Overuse Severity</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="76" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#eab308;margin-top:4px;font-weight:600">HIGH — 76/100</div>
+        </div>
+      </div>
+
+      <div class="card contaminant-card c4 reveal reveal-delay-1">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">🔮</div>
+        <h3>Industrial Effluents</h3>
+        <p>Tanneries (Cr), textile dyeing (Azo dyes, heavy metals), paper mills, and electroplating units discharge untreated effluents onto farmland. ~60% of Indian SMEs lack adequate ETPs.</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#a855f7">Affected zones:</strong> Vellore, Kanpur, Surat, Ludhiana industrial corridors.</p>
+        <div class="contaminant-level">
+          <div class="label">Area Impact Level</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="71" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#a855f7;margin-top:4px;font-weight:600">HIGH — 71/100</div>
+        </div>
+      </div>
+
+      <div class="card contaminant-card c5 reveal reveal-delay-2">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">🌊</div>
+        <h3>Microplastics</h3>
+        <p>Emerging contaminant — plastic mulch films, sewage sludge, and plastic debris fragment into microplastics that accumulate in soil, disrupt soil biota, and enter crop tissues.</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#06b6d4">Found in:</strong> 78% of agricultural soil samples tested near urban centres in 2022–23 studies.</p>
+        <div class="contaminant-level">
+          <div class="label">Emerging Threat Level</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="58" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#06b6d4;margin-top:4px;font-weight:600">MODERATE — 58/100</div>
+        </div>
+      </div>
+
+      <div class="card contaminant-card c6 reveal reveal-delay-3">
+        <div class="glow-bg"></div>
+        <div class="contaminant-icon">☢️</div>
+        <h3>Radioactive Contaminants</h3>
+        <p>Naturally occurring radon, uranium in groundwater-irrigated soils (Kerala, Rajasthan, UP), and phosphate fertilizer-borne radium are raising concerns in specific geologies.</p>
+        <p style="margin-top:10px;font-size:0.8rem;color:var(--clr-txt-muted)"><strong style="color:#ec4899">Kerala:</strong> High natural radiation zones in Alappuzha & Kollam coastal soils — studied by BARC.</p>
+        <div class="contaminant-level">
+          <div class="label">Localized Risk</div>
+          <div class="progress-bar"><div class="progress-fill" data-width="42" style="width:0%"></div></div>
+          <div style="font-size:0.75rem;color:#ec4899;margin-top:4px;font-weight:600">MODERATE — 42/100</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGIONAL MAP ══════════════════════════════════════ -->
+<section id="regional-map" class="section-pad" style="background:var(--clr-bg-secondary)">
+  <div class="container">
+    <span class="tag danger reveal">📍 State-Level Analysis</span>
+    <h2 class="section-title reveal">Pollution Risk by Indian State</h2>
+    <p class="section-sub reveal">Click any bar to see detailed state-level contamination breakdown. Data sourced from CPCB, ICAR, and state pollution control boards.</p>
+    <div class="map-layout reveal">
+      <div id="india-svg-map" style="min-height:520px;display:flex;flex-direction:column;justify-content:center">
+        <div style="height:480px;position:relative">
+          <canvas id="india-map-chart"></canvas>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div class="map-legend card" style="padding:20px">
+          <h4>Risk Level Scale</h4>
+          <div class="legend-item"><div class="legend-swatch" style="background:#ef4444"></div><span>Critical (≥80)</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#f97316"></div><span>High (70–79)</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#eab308"></div><span>Elevated (60–69)</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#86a340"></div><span>Moderate (&lt;60)</span></div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--clr-border);font-size:0.75rem;color:var(--clr-txt-muted)">
+            Index combines heavy metal, pesticide &amp; nitrate contamination levels. Source: CPCB/ICAR 2023.
+          </div>
+        </div>
+        <div class="state-info-card card" id="state-detail" style="min-height:220px">
+          <div style="color:var(--clr-txt-muted);font-size:0.85rem;text-align:center;padding-top:40px">
+            👆 Click a state bar to see details
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DASHBOARD / CHARTS ════════════════════════════════ -->
+<section id="dashboard" class="section-pad">
+  <div class="container">
+    <span class="tag primary reveal">📊 Interactive Data</span>
+    <h2 class="section-title reveal">Historical Trends &amp; Analysis</h2>
+    <p class="section-sub reveal">Multi-decade data on heavy metal accumulation, pesticide use, crop yields and fertilizer consumption across India. All charts are interactive.</p>
+
+    <div class="chart-tabs reveal">
+      <button class="chart-tab active" data-tab="metals">Heavy Metals Trend</button>
+      <button class="chart-tab" data-tab="pesticides">Pesticide Use</button>
+      <button class="chart-tab" data-tab="yield">Crop Yield vs Pollution</button>
+      <button class="chart-tab" data-tab="fertilizer">Fertilizer NPK Load</button>
+    </div>
+
+    <div id="pane-metals" class="chart-pane active">
+      <div class="chart-card">
+        <h3>Heavy Metal Accumulation in Indian Agricultural Soils (2000–2023)</h3>
+        <p class="chart-subtitle">Average soil metal concentrations from CPCB monitoring network across major agricultural districts. Arsenic &amp; Lead show most alarming upward trajectories.</p>
+        <div class="chart-wrapper" style="height:380px"><canvas id="chart-heavy-metals"></canvas></div>
+      </div>
+    </div>
+
+    <div id="pane-pesticides" class="chart-pane">
+      <div class="chart-card">
+        <h3>Pesticide Consumption in India by Category (1991–2023)</h3>
+        <p class="chart-subtitle">Technical grade pesticide use shows declining organochlorines (banned) but rising herbicides and pyrethroids. Total use bottomed in 2005 before rising again.</p>
+        <div class="chart-wrapper" style="height:380px"><canvas id="chart-pesticides"></canvas></div>
+      </div>
+    </div>
+
+    <div id="pane-yield" class="chart-pane">
+      <div class="chart-card">
+        <h3>Crop Yields vs Soil Health &amp; Pollution Index (1980–2023)</h3>
+        <p class="chart-subtitle">While yields have grown with improved seeds &amp; inputs, the soil health index has declined steadily — a trajectory that threatens long-term food security.</p>
+        <div class="chart-wrapper" style="height:380px"><canvas id="chart-yield"></canvas></div>
+      </div>
+    </div>
+
+    <div id="pane-fertilizer" class="chart-pane">
+      <div class="chart-card">
+        <h3>Fertilizer NPK Consumption in India — kg per Hectare (1980–2022)</h3>
+        <p class="chart-subtitle">Nitrogen domination in India's fertilizer use leads to soil acidification and nitrate pollution. The N:P:K imbalance is a major contributor to soil degradation.</p>
+        <div class="chart-wrapper" style="height:380px"><canvas id="chart-fertilizer"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDIES ══════════════════════════════════════ -->
+<section id="casestudies" class="section-pad" style="background:var(--clr-bg-secondary)">
+  <div class="container">
+    <span class="tag danger reveal">📁 Field Evidence</span>
+    <h2 class="section-title reveal">Real Case Studies Across India</h2>
+    <p class="section-sub reveal">Five documented hotspot cases showing how soil contamination has devastated local agriculture, human health, and food safety in different corners of India.</p>
+    <div class="grid-2" id="cases-grid" style="grid-template-columns:repeat(2,1fr)">
+      <!-- Injected by JS -->
+      <div style="color:var(--clr-txt-muted);text-align:center;padding:40px;grid-column:span 2">Loading case studies…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOD SAFETY ════════════════════════════════════════ -->
+<section id="foodsafety" class="section-pad">
+  <div class="container">
+    <span class="tag danger reveal">🍽 FSSAI Analysis</span>
+    <h2 class="section-title reveal">Contaminant Levels in<br/>Indian Food Supply</h2>
+    <p class="section-sub reveal">Percentage of food samples exceeding FSSAI (Food Safety and Standards Authority of India) maximum permissible limits for heavy metals and pesticide residues.</p>
+    <div class="food-grid reveal">
+      <div class="food-chart-wrap">
+        <h3>% Samples Exceeding FSSAI Limits by Food Category</h3>
+        <div style="height:340px;position:relative"><canvas id="chart-food-safety"></canvas></div>
+      </div>
+      <div class="food-chart-wrap">
+        <h3>FSSAI Maximum Limits — Selected Contaminants</h3>
+        <div style="overflow-x:auto">
+          <table class="fssai-table">
+            <thead>
+              <tr><th>Food Item</th><th>As (ppm)</th><th>Pb (ppm)</th><th>Cd (ppm)</th><th>Risk</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rice</td><td>0.10</td><td>0.10</td><td>0.10</td><td><span class="exceed-badge high-r">HIGH</span></td></tr>
+              <tr><td>Wheat</td><td>0.10</td><td>0.20</td><td>0.10</td><td><span class="exceed-badge high-r">HIGH</span></td></tr>
+              <tr><td>Vegetables</td><td>0.30</td><td>0.30</td><td>0.20</td><td><span class="exceed-badge high-r">HIGH</span></td></tr>
+              <tr><td>Fruits</td><td>0.20</td><td>0.10</td><td>0.05</td><td><span class="exceed-badge med-r">MEDIUM</span></td></tr>
+              <tr><td>Milk</td><td>0.02</td><td>0.02</td><td>0.01</td><td><span class="exceed-badge low-r">LOW</span></td></tr>
+              <tr><td>Freshwater Fish</td><td>0.10</td><td>0.50</td><td>0.10</td><td><span class="exceed-badge high-r">HIGH</span></td></tr>
+              <tr><td>Pulses</td><td>0.30</td><td>0.10</td><td>0.10</td><td><span class="exceed-badge med-r">MEDIUM</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:16px;padding:14px;background:rgba(220,38,38,0.07);border-radius:var(--radius);border-left:3px solid var(--clr-red)">
+          <p style="font-size:0.82rem;color:var(--clr-txt-muted)">⚠ <strong style="color:#f87171">Freshwater fish</strong> from arsenic-contaminated river systems in West Bengal &amp; Bihar show exceedance rates up to 45% — the highest across all food categories.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health Pathways -->
+    <div style="margin-top:48px">
+      <h3 class="reveal" style="font-size:1.3rem;font-weight:700;margin-bottom:28px">Human Exposure Pathways</h3>
+      <div class="grid-4 reveal">
+        <div class="card" style="text-align:center;padding:24px">
+          <div style="font-size:2.5rem;margin-bottom:12px">🍚</div>
+          <h4 style="font-size:0.95rem;margin-bottom:8px">Dietary Ingestion</h4>
+          <p style="font-size:0.8rem;color:var(--clr-txt-muted)">Primary route. Rice, wheat &amp; vegetables grown in contaminated soil accumulate metals in edible parts.</p>
+          <div style="margin-top:12px;font-size:0.75rem;color:#ef4444;font-weight:600">60–70% of total exposure</div>
+        </div>
+        <div class="card" style="text-align:center;padding:24px">
+          <div style="font-size:2.5rem;margin-bottom:12px">💧</div>
+          <h4 style="font-size:0.95rem;margin-bottom:8px">Water Leaching</h4>
+          <p style="font-size:0.8rem;color:var(--clr-txt-muted)">Pollutants leach into groundwater aquifers which supply drinking water to 85% of rural India.</p>
+          <div style="margin-top:12px;font-size:0.75rem;color:#f97316;font-weight:600">15–25% of total exposure</div>
+        </div>
+        <div class="card" style="text-align:center;padding:24px">
+          <div style="font-size:2.5rem;margin-bottom:12px">💨</div>
+          <h4 style="font-size:0.95rem;margin-bottom:8px">Dust Inhalation</h4>
+          <p style="font-size:0.8rem;color:var(--clr-txt-muted)">Soil dust from contaminated fields carries heavy metal particulates — significant for farm workers.</p>
+          <div style="margin-top:12px;font-size:0.75rem;color:#eab308;font-weight:600">5–10% of total exposure</div>
+        </div>
+        <div class="card" style="text-align:center;padding:24px">
+          <div style="font-size:2.5rem;margin-bottom:12px">🤲</div>
+          <h4 style="font-size:0.95rem;margin-bottom:8px">Dermal Contact</h4>
+          <p style="font-size:0.8rem;color:var(--clr-txt-muted)">Children playing in contaminated soil and farm workers have direct dermal absorption of toxins.</p>
+          <div style="margin-top:12px;font-size:0.75rem;color:#86a340;font-weight:600">2–5% of total exposure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTIONS ══════════════════════════════════════════ -->
+<section id="solutions" class="section-pad" style="background:var(--clr-bg-secondary)">
+  <div class="container">
+    <span class="tag teal reveal">🌱 Remediation &amp; Policy</span>
+    <h2 class="section-title reveal">Combating Soil Pollution<br/>in India</h2>
+    <p class="section-sub reveal">A comparison of remediation effectiveness versus cost, and the key government schemes and scientific methods being deployed across India.</p>
+
+    <div class="grid-2 reveal" style="margin-bottom:48px;gap:32px">
+      <div class="card">
+        <h3 style="margin-bottom:20px;font-size:1rem">Remediation Technique Comparison</h3>
+        <div style="height:320px;position:relative"><canvas id="chart-remediation"></canvas></div>
+      </div>
+      <div>
+        <div class="remediation-grid" style="grid-template-columns:1fr 1fr;gap:16px">
+          <div class="card remediation-card" style="padding:20px">
+            <div class="rem-icon">🌻</div>
+            <div class="rem-title">Phytoremediation</div>
+            <div class="rem-desc">Sunflower, Vetiver &amp; hyperaccumulator plants extract heavy metals from soil into biomass. Most cost-effective long-term solution.</div>
+            <div class="rem-eff"><span>Effectiveness</span><span class="eff-val">72%</span></div>
+          </div>
+          <div class="card remediation-card" style="padding:20px">
+            <div class="rem-icon">🪨</div>
+            <div class="rem-title">Biochar Amendment</div>
+            <div class="rem-desc">Adding biochar (pyrolyzed biomass) to soil immobilizes heavy metals, improves pH, and boosts organic carbon.</div>
+            <div class="rem-eff"><span>Effectiveness</span><span class="eff-val">65%</span></div>
+          </div>
+          <div class="card remediation-card" style="padding:20px">
+            <div class="rem-icon">🦠</div>
+            <div class="rem-title">Bioremediation</div>
+            <div class="rem-desc">Indigenous microbes (Bacillus, Pseudomonas) that degrade pesticides and immobilize metals — field trials positive in Punjab.</div>
+            <div class="rem-eff"><span>Effectiveness</span><span class="eff-val">60%</span></div>
+          </div>
+          <div class="card remediation-card" style="padding:20px">
+            <div class="rem-icon">🚿</div>
+            <div class="rem-title">Soil Washing</div>
+            <div class="rem-desc">Chemical extraction of metals using EDTA or citric acid — highly effective but expensive. Used in Vellore tannery sites.</div>
+            <div class="rem-eff"><span>Effectiveness</span><span class="eff-val">88%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy cards -->
+    <div class="grid-3 reveal">
+      <div class="card" style="border-left:3px solid var(--clr-primary)">
+        <div style="font-size:1.8rem;margin-bottom:12px">📋</div>
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px">Soil Health Card Scheme</h3>
+        <p style="font-size:0.82rem;color:var(--clr-txt-muted)">Launched 2015 — over 22 crore Soil Health Cards issued to farmers. Tests 12 soil parameters including pH, NPK, micronutrients. Helps reduce over-fertilization.</p>
+        <div style="margin-top:12px;font-size:0.75rem;color:var(--clr-primary);font-weight:600">✓ 220 Million cards issued</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--clr-gold)">
+        <div style="font-size:1.8rem;margin-bottom:12px">🌾</div>
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px">Natural Farming Mission</h3>
+        <p style="font-size:0.82rem;color:var(--clr-txt-muted)">NMAET (2022) targets 1 million ha under natural/zero-budget farming. Promotes Jeevamrit and Beejamrit microbial cultures to replace chemical inputs.</p>
+        <div style="margin-top:12px;font-size:0.75rem;color:var(--clr-gold);font-weight:600">✓ 4.9 Lakh farmers enrolled</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--clr-teal)">
+        <div style="font-size:1.8rem;margin-bottom:12px">⚖️</div>
+        <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px">Pesticide Regulation</h3>
+        <p style="font-size:0.82rem;color:var(--clr-txt-muted)">India has banned 27 pesticides since 2020. The draft Pesticide Management Bill (2020) proposes stricter registration, liability clauses, and soil residue monitoring.</p>
+        <div style="margin-top:12px;font-size:0.75rem;color:var(--clr-teal);font-weight:600">✓ 27 pesticides banned (2020–24)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POLICY TIMELINE ════════════════════════════════════ -->
+<section id="timeline" class="section-pad">
+  <div class="container">
+    <span class="tag primary reveal">📅 Policy Evolution</span>
+    <h2 class="section-title reveal" style="text-align:center">India's Environmental &amp;<br/>Soil Policy Timeline</h2>
+    <p class="section-sub reveal" style="text-align:center;margin:0 auto 60px">From the foundational 1974 Water Act to the 2023 FAO commitments — how India's response to soil pollution has evolved over five decades.</p>
+    <div class="timeline-wrap" id="timeline-wrap">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIVE API DATA ══════════════════════════════════════ -->
+<section id="live-data" class="section-pad" style="background:var(--clr-bg-secondary)">
+  <div class="container">
+    <span class="tag teal reveal">⚡ Real-Time Data</span>
+    <h2 class="section-title reveal">Live World Bank API —<br/>India Agriculture Indicators</h2>
+    <p class="section-sub reveal">Data fetched in real-time directly from the World Bank Open Data API. Sparklines show historical trend; green/red arrow shows year-on-year change.</p>
+    <div class="api-grid reveal">
+      <div class="api-widget">
+        <div class="api-widget-header">
+          <h3>🌱 Fertilizer Consumption (% of Production)</h3>
+          <span class="tag primary" style="margin:0;font-size:0.65rem">World Bank · AG.CON.FERT.ZS</span>
+        </div>
+        <div id="wb-fertilizer"><div class="api-loading"><div class="spinner"></div> Connecting to API…</div></div>
+      </div>
+      <div class="api-widget">
+        <div class="api-widget-header">
+          <h3>🌾 Cereal Yield (kg per Hectare)</h3>
+          <span class="tag primary" style="margin:0;font-size:0.65rem">World Bank · AG.YLD.CREL.KG</span>
+        </div>
+        <div id="wb-yield"><div class="api-loading"><div class="spinner"></div> Connecting to API…</div></div>
+      </div>
+      <div class="api-widget">
+        <div class="api-widget-header">
+          <h3>🗺 Arable Land (% of Land Area)</h3>
+          <span class="tag primary" style="margin:0;font-size:0.65rem">World Bank · AG.LND.ARBL.ZS</span>
+        </div>
+        <div id="wb-arable"><div class="api-loading"><div class="spinner"></div> Connecting to API…</div></div>
+      </div>
+      <div class="api-widget">
+        <div class="api-widget-header">
+          <h3>👶 Child Malnutrition Prevalence</h3>
+          <span class="tag primary" style="margin:0;font-size:0.65rem">World Bank · SH.STA.MALN.ZS</span>
+        </div>
+        <div id="wb-malnutrition"><div class="api-loading"><div class="spinner"></div> Connecting to API…</div></div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:24px;padding:16px 20px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.15);border-radius:var(--radius);display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--clr-txt-muted)">
+      <span style="font-size:1rem">ℹ️</span>
+      <span>All data fetched live from <strong style="color:#4ade80">api.worldbank.org</strong> — no API key required. Updates annually. Data represents India (Country Code: IN).</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESOURCES ══════════════════════════════════════════ -->
+<section id="resources" class="section-pad">
+  <div class="container">
+    <span class="tag primary reveal">📚 Data Sources</span>
+    <h2 class="section-title reveal">Research Resources &amp;<br/>Official Data Portals</h2>
+    <p class="section-sub reveal">Curated list of authoritative sources used in this project. All sources are governmental, UN-affiliated, or peer-reviewed scientific institutions.</p>
+    <div class="grid-4" id="resources-grid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUICK FACTS BANNER ════════════════════════════════ -->
+<section style="background:linear-gradient(135deg,rgba(134,163,64,0.12),rgba(201,168,76,0.08));border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);padding:60px 0">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px">
+      <h2 class="section-title reveal" style="margin-bottom:0">Key Facts to Remember</h2>
+    </div>
+    <div class="grid-3 reveal">
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:3rem;font-weight:900;color:#ef4444;font-family:'JetBrains Mono',monospace" data-count="45" data-suffix=" µg/dL">0</div>
+        <div style="font-size:0.85rem;color:var(--clr-txt-muted);margin-top:8px">Mean blood-lead in Chanderiya area children<br/><span style="color:#4a5740">(WHO action level: 5 µg/dL)</span></div>
+      </div>
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:3rem;font-weight:900;color:#f97316;font-family:'JetBrains Mono',monospace" data-count="290000" data-suffix=" mg/kg">0</div>
+        <div style="font-size:0.85rem;color:var(--clr-txt-muted);margin-top:8px">Peak soil Chromium in Vellore tannery zone<br/><span style="color:#4a5740">(Safe limit: 0.1 mg/kg)</span></div>
+      </div>
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:3rem;font-weight:900;color:#c9a84c;font-family:'JetBrains Mono',monospace" data-count="15" data-suffix=" Million">0</div>
+        <div style="font-size:0.85rem;color:var(--clr-txt-muted);margin-top:8px">People exposed to arsenic above WHO limits<br/><span style="color:#4a5740">(Gangetic Plains — WB &amp; Bihar)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:12px">
+          <div class="logo-icon">🌱</div>
+          <span style="color:var(--clr-txt)">Mrittika<span style="color:var(--clr-primary)">Watch</span></span>
+        </div>
+        <p>An interactive research platform on soil pollution and food safety in India. Built for CHE110 — Environmental Chemistry, Lovely Professional University.</p>
+        <div class="footer-tags" style="margin-top:16px">
+          <span class="f-tag">CHE110</span>
+          <span class="f-tag">LPU</span>
+          <span class="f-tag">Research</span>
+          <span class="f-tag">2024–25</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#contaminants">Contaminants</a></li>
+          <li><a href="#regional-map">State Analysis</a></li>
+          <li><a href="#dashboard">Charts</a></li>
+          <li><a href="#casestudies">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="#foodsafety">Food Safety</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#timeline">Policy Timeline</a></li>
+          <li><a href="#live-data">Live API Data</a></li>
+          <li><a href="dashboard.html">Full Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Data Sources</h4>
+        <ul>
+          <li><a href="https://cpcb.nic.in" target="_blank">CPCB India</a></li>
+          <li><a href="https://icar.org.in" target="_blank">ICAR</a></li>
+          <li><a href="https://www.fao.org" target="_blank">FAO / FAOSTAT</a></li>
+          <li><a href="https://data.worldbank.org" target="_blank">World Bank API</a></li>
+          <li><a href="https://www.who.int" target="_blank">WHO</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MrittikaWatch · CHE110 Project · <a href="https://www.lpu.in" target="_blank">Lovely Professional University</a></span>
+      <span style="color:var(--clr-txt-dim)">Data: CPCB · ICAR · FAO · World Bank · NEERI · WHO</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data-inline.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

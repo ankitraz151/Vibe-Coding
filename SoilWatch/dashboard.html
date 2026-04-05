@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interactive Dashboard — MrittikaWatch India</title>
+<meta name="description" content="Full interactive data dashboard — soil pollution trends, state comparison, food safety exceedance, live API data for India"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/dashboard.css"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;color:inherit;font-weight:700;font-size:1.05rem">
+      <div class="logo-icon">🌱</div>
+      <span>Mrittika<span>Watch</span></span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">← Home</a></li>
+    <li><a href="#kpi">KPI Strip</a></li>
+    <li><a href="#trend-section">Trends</a></li>
+    <li><a href="#state-section">States</a></li>
+    <li><a href="#food-section">Food Safety</a></li>
+    <li><a href="#api-section">Live API</a></li>
+  </ul>
+  <div class="nav-cta">
+    <div class="live-indicator"><span class="live-dot"></span> Live Data</div>
+  </div>
+</nav>
+
+<!-- Dashboard Header -->
+<div class="dash-header">
+  <div class="container">
+    <span class="tag primary">📊 Interactive Dashboard</span>
+    <h1>India Soil Pollution<br/>Analytics Dashboard</h1>
+    <p style="color:var(--clr-txt-muted);font-size:0.95rem;max-width:600px;margin-bottom:32px">
+      Comprehensive data visualization — historical trends, state comparisons, food safety metrics, and live World Bank API data for India's soil health crisis.
+    </p>
+
+    <!-- KPI Strip -->
+    <div class="kpi-strip" id="kpi">
+      <div class="kpi-card">
+        <span class="kpi-val" style="color:#ef4444" data-count="1.46" data-decimals="2" data-suffix="M">0</span>
+        <div class="kpi-label">Hectares Contaminated</div>
+        <div class="kpi-delta up">▲ +3.2% YoY</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val" style="color:#f97316" data-count="62000" data-suffix="">0</span>
+        <div class="kpi-label">Pesticides Used (MT)</div>
+        <div class="kpi-delta up">▲ +5.1% vs 2022</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val" style="color:#c9a84c" data-count="55" data-suffix="/100">0</span>
+        <div class="kpi-label">Soil Health Index</div>
+        <div class="kpi-delta up">▼ -4 pts since 2018</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val" style="color:#86a340" data-count="3562" data-suffix="">0</span>
+        <div class="kpi-label">Wheat Yield (kg/ha)</div>
+        <div class="kpi-delta down">▲ +2.2% (improved seeds)</div>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-val" style="color:#a855f7" data-count="153" data-suffix="">0</span>
+        <div class="kpi-label">Arsenic Districts</div>
+        <div class="kpi-delta up">▲ +12 since 2015</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN DASHBOARD CONTENT ════════════════════════════ -->
+<div style="padding:40px 0;background:var(--clr-bg)">
+  <div class="container">
+
+    <!-- TREND SECTION -->
+    <section id="trend-section" style="margin-bottom:48px">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:6px;color:var(--clr-txt)">📈 Historical Trend Analysis</h2>
+      <p style="font-size:0.82rem;color:var(--clr-txt-muted);margin-bottom:24px">Multi-decade data on pollution, pesticide use, and crop yields across India (1980–2023)</p>
+      <div class="grid-2" style="gap:24px;margin-bottom:24px">
+        <div class="chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <div>
+              <h3>Heavy Metal Accumulation</h3>
+              <p class="chart-subtitle">Soil concentration trends 2000–2023</p>
+            </div>
+            <span class="api-status-badge cached">● Curated / CPCB</span>
+          </div>
+          <div class="chart-wrapper" style="height:280px"><canvas id="d-heavy-metals"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <div>
+              <h3>Pesticide Use by Class</h3>
+              <p class="chart-subtitle">MT consumed annually 1991–2023</p>
+            </div>
+            <span class="api-status-badge cached">● Curated / DGFT</span>
+          </div>
+          <div class="chart-wrapper" style="height:280px"><canvas id="d-pesticides"></canvas></div>
+        </div>
+      </div>
+      <div class="grid-2" style="gap:24px">
+        <div class="chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <div>
+              <h3>Crop Yield vs Soil Health Index</h3>
+              <p class="chart-subtitle">Yield grows while soil health declines 1980–2023</p>
+            </div>
+            <span class="api-status-badge cached">● Curated / ICAR</span>
+          </div>
+          <div class="chart-wrapper" style="height:280px"><canvas id="d-yield"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <div>
+              <h3>NPK Fertilizer Load (kg/ha)</h3>
+              <p class="chart-subtitle">Nitrogen dominance — key driver of soil imbalance</p>
+            </div>
+            <span class="api-status-badge cached">● Curated / FAO</span>
+          </div>
+          <div class="chart-wrapper" style="height:280px"><canvas id="d-fertilizer"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATE SECTION -->
+    <section id="state-section" style="margin-bottom:48px">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:6px">🗺 State-Level Pollution Analysis</h2>
+      <p style="font-size:0.82rem;color:var(--clr-txt-muted);margin-bottom:24px">Comparative risk indices across 15 major Indian states. Hover for details.</p>
+      <div class="grid-2" style="gap:24px">
+        <div class="chart-card">
+          <h3 style="margin-bottom:4px">Overall Pollution Risk Index by State</h3>
+          <p class="chart-subtitle">Composite index: heavy metals + pesticides + nitrate (0–100)</p>
+          <div class="chart-wrapper" style="height:400px"><canvas id="d-state-risk"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3 style="margin-bottom:4px">State Contamination Breakdown</h3>
+          <p class="chart-subtitle">Radar — heavy metal vs pesticide vs nitrate risk for top states</p>
+          <div class="chart-wrapper" style="height:400px"><canvas id="d-state-radar"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD SAFETY SECTION -->
+    <section id="food-section" style="margin-bottom:48px">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:6px">🍽 Food Safety Exceedance Analysis</h2>
+      <p style="font-size:0.82rem;color:var(--clr-txt-muted);margin-bottom:24px">What % of Indian food samples exceed FSSAI maximum permissible limits? Sourced from FSSAI surveillance reports 2022–23.</p>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px">
+        <div class="chart-card">
+          <h3 style="margin-bottom:4px">Exceedance Rate by Contaminant &amp; Food Category</h3>
+          <p class="chart-subtitle">% samples above FSSAI limit — bars grouped by food type</p>
+          <div class="chart-wrapper" style="height:320px"><canvas id="d-food"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3 style="margin-bottom:16px">Contamination Spotlight</h3>
+          <div id="food-spotlight">
+            <div class="spotlight-item" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--clr-border)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:0.85rem">🐟 Freshwater Fish (Arsenic)</span>
+                <span style="font-size:0.85rem;font-weight:700;color:#ef4444">45%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:45%;background:#ef4444"></div></div>
+            </div>
+            <div class="spotlight-item" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--clr-border)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:0.85rem">🥦 Vegetables (Pesticide)</span>
+                <span style="font-size:0.85rem;font-weight:700;color:#f97316">48%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:48%;background:#f97316"></div></div>
+            </div>
+            <div class="spotlight-item" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--clr-border)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:0.85rem">🌾 Wheat (Pesticide)</span>
+                <span style="font-size:0.85rem;font-weight:700;color:#eab308">35%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:35%;background:#eab308"></div></div>
+            </div>
+            <div class="spotlight-item" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--clr-border)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:0.85rem">🍚 Rice (Arsenic)</span>
+                <span style="font-size:0.85rem;font-weight:700;color:#a855f7">32%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:32%;background:#a855f7"></div></div>
+            </div>
+            <div style="padding:14px;background:rgba(220,38,38,0.07);border-radius:var(--radius-sm);font-size:0.78rem;color:var(--clr-txt-muted)">
+              ⚠️ India's FSSAI surveyed ~85,000 food samples in 2022–23. Staple foods show alarming exceedance rates, suggesting soil pollution is actively entering the food chain.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REMEDIATION SECTION -->
+    <section style="margin-bottom:48px">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:6px">🌿 Remediation Effectiveness vs Cost</h2>
+      <p style="font-size:0.82rem;color:var(--clr-txt-muted);margin-bottom:24px">Comparing techniques on two axes — higher effectiveness + lower cost = better choice for Indian conditions.</p>
+      <div class="grid-2" style="gap:24px">
+        <div class="chart-card">
+          <h3 style="margin-bottom:4px">Radar — Effectiveness vs Affordability</h3>
+          <p class="chart-subtitle">Phytoremediation scores best on combined metric for India</p>
+          <div class="chart-wrapper" style="height:360px"><canvas id="d-remediation-radar"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3 style="margin-bottom:4px">Effectiveness vs Cost Scatter</h3>
+          <p class="chart-subtitle">Ideal techniques: top-left (high effectiveness, low cost)</p>
+          <div class="chart-wrapper" style="height:360px"><canvas id="d-remediation-scatter"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE API SECTION -->
+    <section id="api-section" style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+        <div>
+          <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:4px">⚡ Live World Bank API — India</h2>
+          <p style="font-size:0.82rem;color:var(--clr-txt-muted)">Real-time fetch from api.worldbank.org · Updated automatically · No API key needed</p>
+        </div>
+        <button id="refresh-api" class="btn btn-outline" style="font-size:0.82rem;padding:8px 18px" onclick="refreshWorldBank()">🔄 Refresh Data</button>
+      </div>
+      <div class="grid-2" style="gap:24px">
+        <div class="api-widget chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <h3>🌱 Fertilizer Consumption</h3>
+            <span class="api-status-badge live" id="badge-fertilizer">● Loading…</span>
+          </div>
+          <div id="dash-wb-fertilizer"><div class="api-loading"><div class="spinner"></div> Fetching…</div></div>
+          <div style="height:140px;position:relative;margin-top:12px"><canvas id="api-chart-fertilizer"></canvas></div>
+        </div>
+        <div class="api-widget chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <h3>🌾 Cereal Yield (kg/ha)</h3>
+            <span class="api-status-badge live" id="badge-yield">● Loading…</span>
+          </div>
+          <div id="dash-wb-yield"><div class="api-loading"><div class="spinner"></div> Fetching…</div></div>
+          <div style="height:140px;position:relative;margin-top:12px"><canvas id="api-chart-yield"></canvas></div>
+        </div>
+        <div class="api-widget chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <h3>🗺 Arable Land %</h3>
+            <span class="api-status-badge live" id="badge-arable">● Loading…</span>
+          </div>
+          <div id="dash-wb-arable"><div class="api-loading"><div class="spinner"></div> Fetching…</div></div>
+          <div style="height:140px;position:relative;margin-top:12px"><canvas id="api-chart-arable"></canvas></div>
+        </div>
+        <div class="api-widget chart-card">
+          <div class="flex-between" style="margin-bottom:16px">
+            <h3>👶 Malnutrition Prevalence %</h3>
+            <span class="api-status-badge live" id="badge-malnutrition">● Loading…</span>
+          </div>
+          <div id="dash-wb-malnutrition"><div class="api-loading"><div class="spinner"></div> Fetching…</div></div>
+          <div style="height:140px;position:relative;margin-top:12px"><canvas id="api-chart-malnutrition"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--clr-surface);border-top:1px solid var(--clr-border);padding:24px 0;text-align:center">
+  <div class="container">
+    <p style="font-size:0.8rem;color:var(--clr-txt-muted)">MrittikaWatch Dashboard · CHE110 · LPU · Data: CPCB, ICAR, FAO, World Bank, NEERI &nbsp;·&nbsp; <a href="index.html">← Back to Home</a></p>
+  </div>
+</footer>
+
+<script src="js/data-inline.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

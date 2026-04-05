@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Soil Pollution Data - India",
+    "description": "Curated data on soil pollution across Indian states",
+    "lastUpdated": "2024",
+    "sources": ["CPCB", "ICAR", "FAO", "World Bank", "NEERI", "Ministry of Agriculture India"]
+  },
+  "nationalStats": {
+    "totalContaminatedArea_mha": 1.46,
+    "pesticidesUsed_MT_2023": 62000,
+    "fertilizerConsumption_MT_2023": 61000000,
+    "affectedFarmers_millions": 120,
+    "cropYieldLoss_percent": 15,
+    "heavyMetalSites": 3947,
+    "arsenic_affected_districts": 153
+  },
+  "stateContaminationLevels": [
+    { "state": "Punjab", "heavyMetal": 78, "pesticide": 92, "nitrate": 85, "overallRisk": 88, "mainPollutant": "Organochlorines, Cadmium" },
+    { "state": "Haryana", "heavyMetal": 72, "pesticide": 81, "nitrate": 79, "overallRisk": 79, "mainPollutant": "Lead, DDT residues" },
+    { "state": "Uttar Pradesh", "heavyMetal": 65, "pesticide": 68, "nitrate": 62, "overallRisk": 66, "mainPollutant": "Chromium, Lead" },
+    { "state": "West Bengal", "heavyMetal": 85, "pesticide": 58, "nitrate": 45, "overallRisk": 74, "mainPollutant": "Arsenic (geogenic)" },
+    { "state": "Bihar", "heavyMetal": 70, "pesticide": 52, "nitrate": 55, "overallRisk": 62, "mainPollutant": "Arsenic, Fluoride" },
+    { "state": "Maharashtra", "heavyMetal": 60, "pesticide": 75, "nitrate": 58, "overallRisk": 67, "mainPollutant": "Chromium, Nickel (MIDC)" },
+    { "state": "Tamil Nadu", "heavyMetal": 75, "pesticide": 65, "nitrate": 50, "overallRisk": 69, "mainPollutant": "Chromium (tanneries)" },
+    { "state": "Andhra Pradesh", "heavyMetal": 55, "pesticide": 88, "nitrate": 48, "overallRisk": 70, "mainPollutant": "Endosulfan, Monocrotophos" },
+    { "state": "Rajasthan", "heavyMetal": 80, "pesticide": 42, "nitrate": 38, "overallRisk": 65, "mainPollutant": "Lead, Zinc (mining)" },
+    { "state": "Madhya Pradesh", "heavyMetal": 50, "pesticide": 55, "nitrate": 45, "overallRisk": 52, "mainPollutant": "Fluoride, Arsenic" },
+    { "state": "Gujarat", "heavyMetal": 68, "pesticide": 62, "nitrate": 55, "overallRisk": 63, "mainPollutant": "Chromium, Mercury" },
+    { "state": "Karnataka", "heavyMetal": 48, "pesticide": 60, "nitrate": 42, "overallRisk": 52, "mainPollutant": "Fluoride, Chromium" },
+    { "state": "Jharkhand", "heavyMetal": 88, "pesticide": 30, "nitrate": 25, "overallRisk": 65, "mainPollutant": "Arsenic, Cadmium (mining)" },
+    { "state": "Odisha", "heavyMetal": 72, "pesticide": 35, "nitrate": 30, "overallRisk": 58, "mainPollutant": "Chromium, Iron" },
+    { "state": "Chhattisgarh", "heavyMetal": 65, "pesticide": 38, "nitrate": 28, "overallRisk": 55, "mainPollutant": "Arsenic, Fluoride" }
+  ],
+  "heavyMetalsTrend": {
+    "years": [2000, 2003, 2006, 2009, 2012, 2015, 2018, 2021, 2023],
+    "arsenic_ppb": [12, 15, 19, 24, 28, 32, 38, 42, 45],
+    "lead_ppm": [18, 21, 26, 31, 38, 44, 51, 57, 61],
+    "cadmium_ppm": [0.8, 1.0, 1.3, 1.7, 2.1, 2.6, 3.2, 3.8, 4.2],
+    "chromium_ppm": [22, 28, 35, 41, 50, 58, 68, 76, 82],
+    "mercury_ppb": [0.05, 0.07, 0.09, 0.12, 0.15, 0.18, 0.22, 0.25, 0.27]
+  },
+  "pesticideUseTrend": {
+    "years": [1991, 1995, 2000, 2005, 2010, 2015, 2018, 2021, 2023],
+    "technicalGradeMT": [75000, 82000, 43000, 39000, 56000, 60000, 61000, 59000, 62000],
+    "organochlorines": [12000, 8000, 3500, 1800, 900, 450, 220, 150, 90],
+    "organophosphates": [28000, 32000, 18000, 15000, 19000, 21000, 20000, 18000, 17000],
+    "pyrethroids": [5000, 8000, 9000, 10000, 13000, 15000, 17000, 18000, 19000],
+    "herbicides": [6000, 9000, 7500, 8500, 13000, 18000, 19500, 21000, 24000]
+  },
+  "cropYieldVsPollution": {
+    "years": [1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2023],
+    "wheatYield_kg_ha": [1630, 2069, 2281, 2583, 2797, 2796, 2938, 3093, 3484, 3562],
+    "riceYield_kg_ha": [1336, 1462, 1740, 1922, 2020, 2167, 2367, 2598, 2652, 2780],
+    "soilHealthIndex": [82, 79, 76, 72, 69, 66, 63, 60, 57, 55],
+    "pollutionIndexEstimate": [10, 14, 18, 23, 29, 35, 42, 50, 57, 62]
+  },
+  "fertilizerConsumption": {
+    "years": [1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022],
+    "nitrogen_kg_ha": [31.1, 43.1, 59.5, 76.4, 89.9, 101.5, 121.4, 104.3, 117.7, 125.4],
+    "phosphorus_kg_ha": [9.2, 14.1, 21.2, 22.9, 25.6, 31.8, 37.3, 28.1, 25.9, 27.1],
+    "potassium_kg_ha": [5.2, 7.0, 9.4, 9.7, 10.5, 12.3, 16.2, 10.4, 8.4, 9.2]
+  },
+  "contaminantFoodSafety": {
+    "foodItems": ["Rice", "Wheat", "Vegetables", "Fruits", "Milk", "Fish (freshwater)", "Pulses"],
+    "arsenicExceedance_percent": [32, 8, 18, 5, 2, 45, 12],
+    "leadExceedance_percent": [14, 9, 22, 11, 6, 28, 8],
+    "cadmiumExceedance_percent": [18, 12, 25, 8, 4, 35, 15],
+    "pesticideResidues_percent": [28, 35, 48, 38, 19, 42, 31],
+    "fssaiLimit_As_ppm": [0.1, 0.1, 0.3, 0.2, 0.02, 0.1, 0.3],
+    "fssaiLimit_Pb_ppm": [0.1, 0.2, 0.3, 0.1, 0.02, 0.5, 0.1]
+  },
+  "casestudies": [
+    {
+      "id": 1,
+      "title": "Punjab's Pesticide Belt",
+      "region": "Malwa, Punjab",
+      "year": "1990–Present",
+      "pollutants": ["DDT", "Endosulfan", "Monocrotophos", "Carbofuran"],
+      "impact": "Known as the 'Cancer Capital of India' – Bathinda/Faridkot districts. Cancer train carries 60+ patients to Bikaner daily. Groundwater contaminated with pesticide residues.",
+      "affectedArea_ha": 2000000,
+      "cancerCases_per100k": 118,
+      "keyFact": "70% of wells in Malwa belt test positive for pesticide residues",
+      "severity": "critical"
+    },
+    {
+      "id": 2,
+      "title": "Arsenic Crisis – West Bengal & Bihar",
+      "region": "Gangetic Plains, West Bengal & Bihar",
+      "year": "1980–Present",
+      "pollutants": ["Arsenic (geogenic + agricultural)"],
+      "impact": "Over 15 million people exposed to arsenic above WHO limits. Arsenicosis, skin lesions, cancers reported widely. Rice grown in As-contaminated fields accumulates the metal.",
+      "affectedArea_ha": 500000,
+      "affected_population_millions": 15,
+      "keyFact": "153 districts across India have arsenic in groundwater above 10 µg/L limit",
+      "severity": "critical"
+    },
+    {
+      "id": 3,
+      "title": "Chromium Contamination – Vellore Tanneries",
+      "region": "Vellore, Tamil Nadu",
+      "year": "1970s–Present",
+      "pollutants": ["Hexavalent Chromium", "Sulphide"],
+      "impact": "Palar river basin and surrounding farmland severely contaminated. Soil chromium up to 2000x safe limits. Groundwater undrinkable. Paddy crops accumulate Cr(VI).",
+      "affectedArea_ha": 50000,
+      "keyFact": "Soil Cr(VI) concentrations up to 290,000 mg/kg recorded in Vellore (safe limit: 0.1 mg/kg)",
+      "severity": "critical"
+    },
+    {
+      "id": 4,
+      "title": "Lead-Zinc Mining – Rajsamand, Rajasthan",
+      "region": "Rajsamand & Udaipur, Rajasthan",
+      "year": "1950s–Present",
+      "pollutants": ["Lead", "Zinc", "Cadmium", "Sulfur Dioxide"],
+      "impact": "HZL smelters have deposited heavy metals across farmland for decades. Villages near Chanderiya smelter report elevated blood-lead in children. Soil Pb up to 3000 mg/kg (safe: 70 mg/kg).",
+      "affectedArea_ha": 120000,
+      "keyFact": "Children in Chanderiya area show mean blood lead levels of 45 µg/dL (WHO action level: 5 µg/dL)",
+      "severity": "high"
+    },
+    {
+      "id": 5,
+      "title": "Industrial Corridor Pollution – Ghaziabad/NCR",
+      "region": "NCR, Uttar Pradesh",
+      "year": "1980s–Present",
+      "pollutants": ["Lead", "Chromium", "Nickel", "Cadmium"],
+      "impact": "Rapid industrialization with inadequate ETP. Hindon river basin soils show multi-metal contamination. Urban farms on polluted soil supply vegetables to Delhi markets.",
+      "affectedArea_ha": 80000,
+      "keyFact": "Vegetables from NCR periurban farms show Cd levels 3-5x FSSAI limits",
+      "severity": "high"
+    }
+  ],
+  "remediationTechniques": [
+    { "technique": "Phytoremediation", "effectiveness": 72, "costIndex": 25, "timeYears": "3-10", "plant": "Vetiver grass, Sunflower, Thlaspi caerulescens" },
+    { "technique": "Biochar Amendment", "effectiveness": 65, "costIndex": 35, "timeYears": "1-3", "plant": "N/A (soil amendment)" },
+    { "technique": "Soil Washing", "effectiveness": 88, "costIndex": 90, "timeYears": "0.5-2", "plant": "N/A" },
+    { "technique": "Bioremediation", "effectiveness": 60, "costIndex": 40, "timeYears": "2-5", "plant": "Microbial consortia" },
+    { "technique": "Lime Amendment", "effectiveness": 55, "costIndex": 20, "timeYears": "1-2", "plant": "N/A (immobilization)" },
+    { "technique": "Vermicomposting", "effectiveness": 48, "costIndex": 15, "timeYears": "2-4", "plant": "Eisenia fetida" },
+    { "technique": "Electrokinetic Remediation", "effectiveness": 80, "costIndex": 75, "timeYears": "0.5-1.5", "plant": "N/A" }
+  ],
+  "policyTimeline": [
+    { "year": 1974, "event": "Water (Prevention & Control of Pollution) Act", "type": "legislation" },
+    { "year": 1980, "event": "Air (Prevention & Control of Pollution) Act", "type": "legislation" },
+    { "year": 1986, "event": "Environment (Protection) Act – umbrella legislation", "type": "legislation" },
+    { "year": 1989, "event": "Hazardous Waste (Management) Rules", "type": "rules" },
+    { "year": 2000, "event": "Solid Waste Management Rules", "type": "rules" },
+    { "year": 2008, "event": "National Soil Health Card Scheme proposed", "type": "scheme" },
+    { "year": 2015, "event": "Soil Health Card Scheme launched (PM initiative)", "type": "scheme" },
+    { "year": 2016, "event": "Pesticide Management Bill drafted", "type": "legislation" },
+    { "year": 2019, "event": "PM-KISAN scheme – soil health linked", "type": "scheme" },
+    { "year": 2022, "event": "Natural Farming Mission announced (reduce chemical inputs)", "type": "scheme" },
+    { "year": 2023, "event": "India signs Global Soil Partnership commitments (FAO)", "type": "international" },
+    { "year": 2024, "event": "National Mission for Sustainable Agriculture update", "type": "scheme" }
+  ]
+}
