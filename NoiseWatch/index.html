@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noise in Our State – Urban Noise Pollution</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-brand">🔊 NoiseWatch</div>
+    <button class="nav-toggle" id="navToggle">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data">State Data</a></li>
+      <li><a href="#sources">Sources</a></li>
+      <li><a href="#humans">Health</a></li>
+      <li><a href="#ecosystem">Ecosystem</a></li>
+      <li><a href="#policy">Policy</a></li>
+      <li><a href="#mitigation">Mitigation</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Environmental Awareness</span>
+      <h1>Noise Pollution<br /><span class="accent">in Urban Ecosystems</span></h1>
+      <p>After air pollution, noise is the second-largest environmental cause of health problems in cities. Explore the data, impacts, and solutions.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" data-target="1.6">0</span><span>B</span><p>People exposed to harmful noise</p></div>
+        <div class="stat"><span class="stat-num" data-target="12000">0</span><p>Premature deaths/year in EU</p></div>
+        <div class="stat"><span class="stat-num" data-target="55">0</span><span>dB</span><p>WHO safe outdoor limit</p></div>
+      </div>
+      <a href="#overview" class="btn-primary">Explore the Issue ↓</a>
+    </div>
+    <div class="sound-wave">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="section">
+    <div class="container">
+      <div class="section-label">Overview</div>
+      <h2>What Is Urban Noise Pollution?</h2>
+      <div class="two-col">
+        <div>
+          <p>Noise pollution refers to unwanted or harmful levels of sound in the environment. In urban areas, it stems from traffic, construction, industry, and human activity — creating a constant acoustic backdrop that affects health and biodiversity.</p>
+          <p>The World Health Organization defines noise above <strong>55 dB L<sub>den</sub></strong> as harmful for outdoor environments, and recommends bedroom levels below <strong>30 dBA</strong> for restful sleep.</p>
+          <ul class="fact-list">
+            <li>🏙️ Over 100 million Europeans are exposed to harmful road noise</li>
+            <li>🐦 Urban birds have shifted their songs to higher frequencies</li>
+            <li>🌿 Plants exposed to noise show reduced growth and flowering</li>
+            <li>❤️ Chronic noise exposure increases cardiovascular disease risk by 8–17%</li>
+          </ul>
+        </div>
+        <div class="db-scale">
+          <h3>Decibel Reference Scale</h3>
+          <div class="db-bar" style="--pct:20%; --clr:#4ade80"><span>30 dB</span><div></div><small>Quiet bedroom</small></div>
+          <div class="db-bar" style="--pct:40%; --clr:#a3e635"><span>50 dB</span><div></div><small>Quiet office</small></div>
+          <div class="db-bar" style="--pct:55%; --clr:#facc15"><span>60 dB</span><div></div><small>Normal conversation</small></div>
+          <div class="db-bar" style="--pct:70%; --clr:#fb923c"><span>70 dB</span><div></div><small>Busy street ⚠️</small></div>
+          <div class="db-bar" style="--pct:85%; --clr:#f87171"><span>85 dB</span><div></div><small>Heavy traffic 🔴</small></div>
+          <div class="db-bar" style="--pct:100%; --clr:#dc2626"><span>100 dB</span><div></div><small>Jackhammer 🚨</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATE DATA -->
+  <section id="data" class="section section-alt">
+    <div class="container">
+      <div class="section-label">State Data</div>
+      <h2>Noise Levels Across the State</h2>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>Population Exposed by Noise Level</h3>
+          <canvas id="exposureChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Noise Sources Breakdown</h3>
+          <canvas id="sourcesChart"></canvas>
+        </div>
+        <div class="chart-card wide">
+          <h3>Average Urban Noise Trend (2010–2024)</h3>
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <div class="map-inner">
+          <div class="map-pin" style="top:30%;left:40%"><span>72 dB</span></div>
+          <div class="map-pin" style="top:55%;left:60%"><span>68 dB</span></div>
+          <div class="map-pin" style="top:45%;left:25%"><span>65 dB</span></div>
+          <div class="map-pin" style="top:70%;left:50%"><span>58 dB</span></div>
+          <p class="map-note">📍 Interactive noise map — integrate Leaflet.js with official GIS data for live heatmaps</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources" class="section">
+    <div class="container">
+      <div class="section-label">Noise Sources</div>
+      <h2>Where Does Urban Noise Come From?</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="source-icon">🚗</div>
+          <h3>Road Traffic</h3>
+          <p>The dominant source in most cities. Tyre-road contact, engine noise, and horns contribute 65–85 dB near major roads.</p>
+          <div class="db-badge">65–85 dB</div>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">✈️</div>
+          <h3>Aviation</h3>
+          <p>Aircraft noise affects communities near airports. Takeoffs can reach 90–100 dB, with significant sleep disruption at night.</p>
+          <div class="db-badge">90–100 dB</div>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🚂</div>
+          <h3>Rail Transport</h3>
+          <p>Trains generate 70–90 dB. High-speed rail and freight trains are particularly impactful in residential corridors.</p>
+          <div class="db-badge">70–90 dB</div>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🏗️</div>
+          <h3>Construction</h3>
+          <p>Temporary but intense. Pile drivers and demolition can exceed 100 dB, affecting workers and nearby residents.</p>
+          <div class="db-badge">85–105 dB</div>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🏭</div>
+          <h3>Industry</h3>
+          <p>Factories, HVAC systems, and industrial equipment create persistent low-frequency noise in surrounding areas.</p>
+          <div class="db-badge">60–90 dB</div>
+        </div>
+        <div class="source-card">
+          <div class="source-icon">🎵</div>
+          <h3>Recreational</h3>
+          <p>Concerts, nightlife, and sports events generate high short-term noise. Venues near residential areas cause conflict.</p>
+          <div class="db-badge">80–110 dB</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH IMPACTS -->
+  <section id="humans" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Health Impacts</div>
+      <h2>How Noise Affects Human Health</h2>
+      <div class="impact-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">😴</div>
+          <div class="timeline-content">
+            <h3>Sleep Disturbance</h3>
+            <p>Noise above 40 dB at night disrupts sleep cycles, reducing REM sleep and causing daytime fatigue. WHO recommends &lt;30 dBA in bedrooms.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">😰</div>
+          <div class="timeline-content">
+            <h3>Chronic Stress</h3>
+            <p>Persistent noise triggers cortisol release. Long-term stress responses lead to anxiety, irritability, and reduced cognitive performance.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">❤️</div>
+          <div class="timeline-content">
+            <h3>Cardiovascular Disease</h3>
+            <p>Studies show 8–17% increased risk of hypertension and heart disease for those exposed to &gt;65 dB road noise long-term.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">👂</div>
+          <div class="timeline-content">
+            <h3>Hearing Loss</h3>
+            <p>Prolonged exposure above 85 dB causes permanent hearing damage. 1.1 billion young people are at risk from recreational noise.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">🧠</div>
+          <div class="timeline-content">
+            <h3>Cognitive Impairment</h3>
+            <p>Children in noisy schools show delayed reading and language development. Adults experience reduced concentration and memory.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Noise Calculator -->
+      <div class="calculator">
+        <h3>🧮 Noise Risk Calculator</h3>
+        <p>Estimate your daily noise exposure risk based on your environment.</p>
+        <div class="calc-inputs">
+          <label>Home noise level (dB): <input type="range" id="homeNoise" min="30" max="90" value="55" oninput="updateCalc()" /></label>
+          <span id="homeVal">55 dB</span>
+          <label>Hours exposed per day: <input type="range" id="hoursExp" min="1" max="16" value="8" oninput="updateCalc()" /></label>
+          <span id="hoursVal">8 hrs</span>
+        </div>
+        <div class="calc-result" id="calcResult">
+          <div class="risk-bar"><div id="riskFill"></div></div>
+          <p id="riskText">Risk Level: Moderate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM IMPACTS -->
+  <section id="ecosystem" class="section">
+    <div class="container">
+      <div class="section-label">Ecosystem Impacts</div>
+      <h2>Wildlife & Plants Under Acoustic Stress</h2>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?w=400&q=80" alt="Bird" loading="lazy" />
+          <div class="eco-info">
+            <h3>🐦 Birds</h3>
+            <p>Urban noise masks bird calls, disrupting mating and territory signalling. Many species have shifted to higher-frequency songs to be heard above traffic noise.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=400&q=80" alt="Wildlife" loading="lazy" />
+          <div class="eco-info">
+            <h3>🦊 Mammals</h3>
+            <p>Chronic noise causes elevated stress hormones in urban mammals. Deer, foxes, and rodents show altered foraging behaviour and reduced reproductive success.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80" alt="Plants" loading="lazy" />
+          <div class="eco-info">
+            <h3>🌿 Plants</h3>
+            <p>Recent research shows heavy urban noise reduces plant growth, flowering, and seed germination. Noise disrupts pollinators, creating cascading ecosystem effects.</p>
+          </div>
+        </div>
+      </div>
+      <div class="eco-fact-box">
+        <h3>Did You Know?</h3>
+        <p>A 2019 systematic review found that <strong>over 60% of studied species</strong> showed measurable behavioural or physiological changes in response to anthropogenic noise — from fish to insects to large mammals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLICY -->
+  <section id="policy" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Policy & Regulations</div>
+      <h2>Laws, Standards & Action Plans</h2>
+      <div class="policy-grid">
+        <div class="policy-card">
+          <div class="policy-tag">WHO</div>
+          <h3>WHO Environmental Noise Guidelines</h3>
+          <p>Recommends &lt;53 dB L<sub>den</sub> for road traffic noise and &lt;45 dB L<sub>night</sub> to protect health. Updated 2018 guidelines cover all transport sources.</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-tag">EU</div>
+          <h3>Environmental Noise Directive (2002/49/EC)</h3>
+          <p>Requires EU member states to produce strategic noise maps and action plans for major roads, railways, airports, and agglomerations every 5 years.</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-tag">US</div>
+          <h3>EPA Noise Control Act</h3>
+          <p>Establishes federal authority to regulate noise from commercial products. The Quiet Communities Act supports local noise reduction programmes.</p>
+        </div>
+        <div class="policy-card">
+          <div class="policy-tag">Local</div>
+          <h3>City Noise Ordinances</h3>
+          <p>Most cities set time-based limits (e.g. no construction before 7am), maximum dB levels for venues, and quiet zones near hospitals and schools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MITIGATION -->
+  <section id="mitigation" class="section">
+    <div class="container">
+      <div class="section-label">Mitigation</div>
+      <h2>Solutions That Work</h2>
+      <div class="mitigation-grid">
+        <div class="mit-item">
+          <div class="mit-num">01</div>
+          <h3>Noise Barriers</h3>
+          <p>Concrete or earth barriers along highways reduce noise by 5–15 dB for nearby residents. Green walls add biodiversity benefits.</p>
+        </div>
+        <div class="mit-item">
+          <div class="mit-num">02</div>
+          <h3>Quiet Road Surfaces</h3>
+          <p>Porous asphalt and rubberised surfaces reduce tyre-road noise by 3–8 dB — one of the most cost-effective interventions.</p>
+        </div>
+        <div class="mit-item">
+          <div class="mit-num">03</div>
+          <h3>Electric Vehicles</h3>
+          <p>EVs eliminate engine noise at low speeds. Widespread EV adoption could reduce urban traffic noise by 3–5 dB by 2035.</p>
+        </div>
+        <div class="mit-item">
+          <div class="mit-num">04</div>
+          <h3>Urban Green Spaces</h3>
+          <p>Parks and tree belts absorb and scatter sound. Dense vegetation can reduce noise by 5–10 dB while improving air quality.</p>
+        </div>
+        <div class="mit-item">
+          <div class="mit-num">05</div>
+          <h3>Building Design</h3>
+          <p>Triple-glazed windows, acoustic insulation, and courtyard layouts protect residents from external noise without barriers.</p>
+        </div>
+        <div class="mit-item">
+          <div class="mit-num">06</div>
+          <h3>Speed Reduction</h3>
+          <p>Reducing urban speed limits from 50 to 30 km/h cuts traffic noise by ~3 dB — equivalent to halving traffic volume.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community" class="section section-alt">
+    <div class="container">
+      <div class="section-label">Community</div>
+      <h2>Take Action in Your Community</h2>
+      <div class="community-grid">
+        <div class="comm-card">
+          <div class="comm-icon">📱</div>
+          <h3>Citizen Science</h3>
+          <p>Use apps like <strong>NoiseCapture</strong> or <strong>SoundPrint</strong> to measure and map noise in your neighbourhood. Your data contributes to open noise databases.</p>
+          <a href="#" class="btn-outline">Learn More</a>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">📋</div>
+          <h3>File a Complaint</h3>
+          <p>Most cities have noise complaint hotlines or online portals. Document the noise (time, duration, dB if possible) before reporting.</p>
+          <a href="#" class="btn-outline">Find Your Portal</a>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">🗳️</div>
+          <h3>Advocate for Policy</h3>
+          <p>Attend city council meetings, support quiet zone designations, and push for stronger noise ordinances in your area.</p>
+          <a href="#" class="btn-outline">Get Involved</a>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-box">
+        <h3>🎯 Quick Noise Quiz</h3>
+        <div id="quiz">
+          <p id="quizQuestion"></p>
+          <div id="quizOptions" class="quiz-options"></div>
+          <div id="quizFeedback" class="quiz-feedback"></div>
+          <button id="nextBtn" class="btn-primary" style="display:none" onclick="nextQuestion()">Next Question →</button>
+        </div>
+        <div id="quizResult" style="display:none">
+          <p id="quizScore"></p>
+          <button class="btn-primary" onclick="restartQuiz()">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container contact-container">
+      <div class="section-label">Contact</div>
+      <h2>Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>About This Project</h3>
+          <p>NoiseWatch is an independent environmental awareness initiative dedicated to educating communities about the impacts of noise pollution and advocating for quieter, healthier cities.</p>
+          <div class="contact-links">
+            <div>📧 <a href="mailto:info@noisewatch.org">info@noisewatch.org</a></div>
+            <div>🐦 <a href="#">@NoiseWatchOrg</a></div>
+            <div>📍 Your State, Country</div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <select>
+            <option value="">Topic...</option>
+            <option>Report a noise issue</option>
+            <option>Data / Research inquiry</option>
+            <option>Partnership</option>
+            <option>General feedback</option>
+          </select>
+          <textarea placeholder="Your message..." rows="4" required></textarea>
+          <button type="submit" class="btn-primary">Send Message ✉️</button>
+          <p id="formSuccess" style="display:none;color:#4ade80;margin-top:0.5rem">✅ Message sent! We'll be in touch soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">🔊 NoiseWatch</div>
+      <p>Data sources: WHO Environmental Noise Guidelines · EU Environmental Noise Directive · EPA Noise Control Act · Peer-reviewed ecological research</p>
+      <p style="margin-top:0.5rem;opacity:0.5">© 2025 NoiseWatch. Built for environmental awareness.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
